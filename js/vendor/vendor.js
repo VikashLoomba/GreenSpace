@@ -59,3 +59,30 @@ $(function(){
     });
 
 });
+
+    /*Orders Partial*/
+    $(document).ready(function(){
+        $.get("/vendors/orders", function(order){
+            $("#primary").html(order);
+        });
+    });
+    /*LOAD products partial (if clicked)*/
+    $(document).on('click', '#product', function(){
+        $.get("/vendors/products", function(product){
+            $("#primary").html(product);
+        });
+    });
+    /*End load products partial*/
+
+    /*LOAD products partial (if clicked)*/
+    $(document).on('click', '#order', function(){
+        $.get("/vendors/orders", function(order){
+            $("#primary").html(order);
+        });
+    });
+    /*End load products partial*/
+
+    /*Adding a new product*/
+    $("#add_product").click(function(){
+        
+    });

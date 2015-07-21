@@ -6,11 +6,16 @@
 			</a>
 		</div>
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="/vendor/dashboard">Orders</a></li>
-			<li><a id="product">Products</a></li>
+			<li><a id="order" href="#">Orders</a></li>
+			<li><a id="product" href="#">Products</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li class="navbar-text">Signed in as <?= $this->session->userdata('name'); ?></li>
+			<li class="dropdown">
+          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as <?= $this->session->userdata('name'); ?> <span class="caret"></span></a>
+          	<ul class="dropdown-menu">
+	            <li><a href="/vendors/logoff">Log Out</a></li>
+          	</ul>
+        </li>
 		</ul>
 	</div>
 </nav>

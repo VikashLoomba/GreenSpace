@@ -47,6 +47,12 @@ class Vendors extends CI_Controller {
 		}
 	}
 
+	public function logoff()
+	{
+		$this->session->sess_destroy();
+		redirect('/');
+	}
+
 	public function vendor_home()
 	{
 		$this->load->view('vendor/vendor_home');	

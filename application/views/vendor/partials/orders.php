@@ -1,7 +1,6 @@
 <? if (count($orders) == 0) 
 { ?>
 	<div class="alert alert-info" role="alert">No Orders</div>
-
 <? }
 else
 {
