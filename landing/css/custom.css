@@ -1,0 +1,106 @@
+.search-bar {
+	margin-top: 50px;
+}
+
+.btn-search {
+	position: relative;
+	top:-1px;
+}
+
+.form-control::-webkit-input-placeholder { color: #8B8B8B; }
+.form-control:-moz-placeholder { color: #8B8B8B; }
+.form-control::-moz-placeholder { color: #8B8B8B; }
+.form-control:-ms-input-placeholder { color: #8B8B8B; }
+
+.explore1 {
+	background-image: url('../img/rsz_bonfire.jpg');
+	height: 500px;
+	color: white;
+	line-height: 495px;
+}
+
+.explore2 {
+	background-image: url('../img/slider/rsz_slider-2.jpg');
+	height: 300px;
+	color: white;
+	line-height: 295px;
+	margin-top: 10px;
+	width: 580px;
+}
+
+.explore2:nth-child(2) {
+	margin-left: 10px;
+	background-image: url('../img/slider/rsz_slider-3.jpg');
+}
+
+.explore3, .explore4 {
+	background-image: url('../img/slider/rsz_slider-4.jpg');
+	height: 200px;
+	color: white;
+	line-height: 215px;
+	margin-top: 10px;
+	width: 383px;
+	margin-right: 10px;
+}
+
+.explore3:nth-child(3), .explore3:nth-child(6), .explore4:nth-child(3), .explore4:nth-child(6) {
+	margin-right: 0px;
+}
+
+.explore3:nth-child(2) {
+	background-image: url('../img/rsz_about-us-bg.jpg');	
+}
+
+.explore3:nth-child(3) {
+	background-image: url('../img/night.jpg');
+}
+
+.explore3:nth-child(4) {
+	background-image: url('../img/party.jpg');
+}
+
+.explore3:nth-child(5) {
+	background-image: url('../img/mind.jpg');
+}
+
+.explore3:nth-child(6) {
+	background-image: url('../img/nature.jpg');
+}
+
+.explore4:nth-child(1) {
+	background-image: url('../img/jar.jpg');
+}
+
+.explore4:nth-child(2) {
+	background-image: url('../img/migraine.jpg');	
+}
+
+.explore4:nth-child(3) {
+	background-image: url('../img/sad.jpg');
+}
+
+.explore4:nth-child(4) {
+	background-image: url('../img/cramps.jpg');
+}
+
+.explore4:nth-child(5) {
+	background-image: url('../img/arthritis.jpg');
+}
+
+.explore4:nth-child(6) {
+	background-image: url('../img/nature.jpg');
+}
+
+.explore4:nth-child(7) {
+	background-image: url('../img/anxiety.jpg');
+}
+
+
+.category {
+	display: inline;
+}
+
+.title {
+	margin-top: 60px;
+	
+}
