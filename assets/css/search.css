@@ -1,0 +1,88 @@
+/******* THIS IS STYLE FOR USER_NAV ********/
+
+#nav {
+	background-color: #000000;
+	border-color: #000000;
+	color: white !important;
+}
+
+#nav_right_custom {
+	color: white;
+}
+
+/******* END STYLE FOR USER_NAV ********/
+
+/****** THIS IS STYLE FOR ICON ******/
+.icon{
+    border-radius: 15px;
+    width: 158px;
+    height: 175px;
+    color: white;
+    font-size: 20px;
+    font-family: "Campton Light","museo-sans-2","helvetica","arial",sans-serif;
+}
+
+.Hybrid {
+    background-color: #76BD1D;
+}
+
+.Sativa {
+    background-color: #D44727;
+}
+
+.Indica {
+    background-color: #6E335E;
+}
+
+.icon h1 {
+    text-align: center;
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 100px;
+}
+
+.icon p:first-child {
+    font-weight: normal;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.icon p:last-child {
+    text-align: right;
+    padding-right: 10px;
+}
+
+* {
+    font-family: arial;
+}
+
+.strain {
+    font-size: 16px;
+}
+/****** END STYLE FOR ICON ******/
+
+body {
+    padding-top: 70px;
+    background-color: #DCDCD1;
+}
+
+.page {
+    background-color: #fff;
+    width: 40px;
+    height: 5px;
+    border: 1px solid #35dea1;
+}
+
+.active_page {
+    background-color: #35dea1;
+}
+
+.rating {
+    height: 20px;
+    padding-left: 13px;
+}
+
+.hide {
+    display: none;
+}

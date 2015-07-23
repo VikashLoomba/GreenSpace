@@ -1,0 +1,60 @@
+/* ========================================================================
+   Component: Typography
+ ========================================================================== */
+@font-face {
+  font-family: 'Campton Bold';
+  src: url('../fonts/campton/Campton-BoldDEMO.otf');
+}
+@font-face {
+  font-family: 'Campton Light';
+  src: url('../fonts/campton/Campton-LightDEMO.otf');
+}
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    font-size: 16px;
+}
+h2, h3, h4, h5, h6, .bold-text {
+    font-family: 'Montserrat', sans-serif;
+}
+h1, .light-text {
+    font-family: "Campton Light";
+}
+header p {
+    font-size: 18px;
+}
+
+
+
+/* Icon Font
+ ========================================================================== */
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/flaticons_2/flaticon.eot");
+  src: url("../fonts/flaticons_2/flaticon.eot") format("embedded-opentype"),
+  url("../fonts/flaticons_2/flaticon.woff") format("woff"),
+  url("../fonts/flaticons_2/flaticon.ttf") format("truetype"),
+  url("../fonts/flaticons_2/flaticon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*="icon-"]:before,
+[class^="icon-"]:after, [class*="icon-"]:after {
+  display: inline-block;
+  font: normal normal normal 14px/1 Flaticon;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-magnifying-glass34:before {
+  content: "\e000";
+  color: gray;
+}
+
+.flaticon-up151:before {
+  content: "\e001";
+}
