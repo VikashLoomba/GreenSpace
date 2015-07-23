@@ -30,9 +30,13 @@
 <body>
 
 	<!-- Information Section -->
-<div id="primary" class="container-fluid"></div>
+<div id="primary" class="container">
+
+</div>
 	<!-- End Information -->
 
+
+</div>
 </body>
 <!-- End Body -->
 </html>

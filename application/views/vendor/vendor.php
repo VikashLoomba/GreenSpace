@@ -38,6 +38,7 @@
                     <div class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
+                            <button href="/vendors/register" class="btn btn-primary pull-left"><i class="glyphicon glyphicon-log-in"></i> Register</button>                          
                             <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
                         </div>
                     </div>
