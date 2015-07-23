@@ -27,14 +27,16 @@ class Vendor extends CI_Model {
 
     public function find_product($search_term, $vendor_id)
     {
-    	$query = "SELECT * from greencommerce.products where products.name like '%$search_term%' OR products.short_description like '%$search_term%' AND products.id not in(
+    	$query = "SELECT * from greencommerce.products where (products.name like '%$search_term%' OR products.short_description like '%$search_term%') AND products.id not in(
     		select product_id from vendor_products where vendor_id = $vendor_id);";
     	return $this->db->query($query)->result_array();
     }
 
-    public function add_product($vendor_id, $product_id)
+    public function add_product($vendor_id, $product_id, $initial_stock, $initial_price)
     {
-    	$query = "INSERT INTO vendor_products (stock_gram, price_gram, vendor_id, product_id, unit) VALUES (?, ?, ?, ?, ?);";
+    	$query = "INSERT INTO vendor_products (stock_gram, price_gram, vendor_id, product_id, unit) VALUES (?, ?, ?, ?, 'grams');";
+    	$values = array($initial_stock, $initial_price, $vendor_id, $product_id);
+    	return $this->db->query($query, $values);
     }
 }
 
