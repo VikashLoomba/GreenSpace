@@ -1,15 +1,36 @@
 <? if (count($products) == 0) 
 { ?>
 	<div class="alert alert-info" role="alert">No Products</div>
-	<a href="#" class="btn btn-success">Add a Product</a>
 <? }
 else
-{
-	foreach ($products as $product) 
+{	?>
+	<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Strain Name</th>
+			<th>Stock(in grams)</th>
+			<th>Price(per gram)</th>
+		</tr>
+	</thead>
+	<tbody>	
+<?	foreach ($products as $product) 
 	{ ?>
-		<div class="row">
-			<div class="col-md-8">
-			</div>
-		</div>
-<?	}
-} ?>
+	<tr>
+		<td><?= $product['name']; ?></td>
+		<td><?= $product['stock_gram']; ?></td>
+		<td>$<?= $product['price_gram']; ?></td>
+	</tr>
+<?	} ?>
+	</tbody>
+	</table>
+<? } ?>
+<div class="row">
+	<form id="product_search" method="post">
+		<div class="col-md-4">
+			<input id="search_box" type="text" class="form-control" name="search_query" placeholder="Search for a product">
+		</div>  
+		<a id="search_submit" class="btn btn-primary btn-info">Submit</a>
+	</form>	
+</div>
+
+
