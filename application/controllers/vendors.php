@@ -22,15 +22,14 @@ class Vendors extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
 		$this->load->model('vendor');
 	}
-
+/*Load the vendor login page*/
 	public function index()
 	{
 		$this->load->view('vendor/vendor');
 	}
-
+/*Find the vendor in the database and redirect to their dashboard*/
 	public function login()
 	{
 		$vendor_info['username'] = $this->input->post('username');
@@ -46,25 +45,25 @@ class Vendors extends CI_Controller {
 			redirect('/vendor/dashboard');
 		}
 	}
-
+/*Destroy their session and go back to login*/
 	public function logoff()
 	{
 		$this->session->sess_destroy();
 		redirect('/');
 	}
-
+/*Redirects to the vendor dashboard*/
 	public function vendor_home()
 	{
 		$this->load->view('vendor/vendor_home');	
 	}
-
+/*Loads the partial that displays the orders for the vendor*/
 	public function orders()
 	{
 		$vendor_id = $this->session->userdata('id');
 		$vendor_info['orders'] = $this->vendor->get_orders($vendor_id);
 		$this->load->view('vendor/partials/orders', $vendor_info);
 	}
-
+/*Updates the order when they input a fulfilled date*/
 	public function update_vendor_order()
 	{
 		$order['date'] = $this->input->post("date");
@@ -78,14 +77,14 @@ class Vendors extends CI_Controller {
 			echo 'Something went wrong updating order';
 		}
 	}
-
+/*Loads products partial that contains all the products that the vendor carries*/
 	public function products()
 	{
 		$vendor_id = $this->session->userdata('id');
 		$vendor_info['products'] = $this->vendor->get_products($vendor_id);
 		$this->load->view('vendor/partials/products', $vendor_info);
 	}
-
+/*Searches for products that the vendor doesn't carry and displays the results*/
 	public function search_product()
 	{
 		$vendor_id = $this->session->userdata('id');
@@ -93,7 +92,7 @@ class Vendors extends CI_Controller {
 		$vendor_info['search_results'] = $this->vendor->find_product($search_term, $vendor_id);
 		$this->load->view('vendor/partials/search_results', $vendor_info);
 	}
-
+/*Redirects vendor to page that will ask for the initial stock and price for product they want to add*/
 	public function add_product()
 	{
 		$vendor_id = $this->session->userdata('id');
@@ -102,7 +101,19 @@ class Vendors extends CI_Controller {
 		$product_add['product_id'] = $product_id;
 		$this->load->view('vendor/partials/product_add', $product_add);
 	}
-
+/*Adds the product to the vendors catalogue*/
+	public function append_product()
+	{
+		$product_id = $this->input->post("product_id");
+		$vendor_id = $this->input->post("vendor_id");
+		$initial_stock = $this->input->post("stock");
+		$initial_price = $this->input->post("price");
+		if ($this->vendor->add_product($vendor_id, $product_id, $initial_stock, $initial_price)) 
+		{
+			$this->products();
+		}	
+	}
+/*Shows specific product that vendor already carries with editing options*/
 	public function show_product()
 	{
 		$vendor_product_info['vendor_id'] = $this->session->userdata('id');
@@ -118,7 +129,7 @@ class Vendors extends CI_Controller {
 			$this->load->view('vendor/partials/product_page', $product_to_display);
 		}
 	}
-
+/*If vendor submits changes to the product, it is updated in the database and redirects to products*/
 	public function edit_product()
 	{
 		$product_updated['price'] = $this->input->post("price");
@@ -133,25 +144,12 @@ class Vendors extends CI_Controller {
 			echo 'Something went wrong';
 		}
 	}
-
-	public function append_product()
-	{
-		$product_id = $this->input->post("product_id");
-		$vendor_id = $this->input->post("vendor_id");
-		$initial_stock = $this->input->post("stock");
-		$initial_price = $this->input->post("price");
-		if ($this->vendor->add_product($vendor_id, $product_id, $initial_stock, $initial_price)) 
-		{
-			$this->products();
-		}
-			
-	}
-
+/*Loads registration for the vendor*/
 	public function registration()
 	{
 		$this->load->view('vendor/register.php');
 	}
-
+/*Submits the registration and redirects to the login screen*/
 	public function submit_registration()
 	{
 		$vendor_info['name'] = $this->input->post("name");
@@ -173,8 +171,6 @@ class Vendors extends CI_Controller {
 			redirect('/');
 		}
 	}
-
-
 }
 
 
