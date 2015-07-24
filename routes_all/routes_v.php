@@ -50,10 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'vendors';
+/*Vendor login*/
 $route['vendor/home'] = 'vendors/login';
 $route['vendor/dashboard'] = 'vendors/vendor_home';
 $route['vendor/register'] = 'vendors/registration';
 $route['vendor/product/search'] = 'vendors/search_product';
 $route['vendor/product/add'] = 'vendors/add_product';
+$route['vendor/product/show/(:any)'] = 'vendors/show_product/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
