@@ -60,29 +60,87 @@ $(function(){
 
 });
 
-    /*Orders Partial*/
+    /*Load Orders Partial as homepage when dom is ready*/
     $(document).ready(function(){
         $.get("/vendors/orders", function(order){
             $("#primary").html(order);
         });
     });
+
     /*LOAD products partial (if clicked)*/
     $(document).on('click', '#product', function(){
         $.get("/vendors/products", function(product){
             $("#primary").html(product);
         });
     });
-    /*End load products partial*/
 
-    /*LOAD products partial (if clicked)*/
+    /*LOAD orders partial (if clicked)*/
     $(document).on('click', '#order', function(){
         $.get("/vendors/orders", function(order){
             $("#primary").html(order);
         });
     });
-    /*End load products partial*/
 
-    /*Adding a new product*/
-    $("#add_product").click(function(){
-        
+    /*Add fulfilled date from orders partial for unfulfilled order*/
+    $(document).on('click', '#add_fulfilled', function(){
+        var order_id = $(this).attr("order");
+        var date = $("#date_fulfilled").val();
+        $.post("/vendors/update_vendor_order", {date, order_id}, function(update){
+            $("#primary").html(update);
+        });
+        return false;
+    });
+
+    /*Show Single Product View if edit product is clicked*/
+    $(document).on('click', '#show_product', function(){
+        var product_id = $(this).attr("product");
+        var vend_product = $(this).attr("vendor");
+        $.post("/vendors/show_product", {product_id, vend_product}, function(product){
+            $("#primary").html(product);
+        });
+    });
+
+    /*Edit Product Information in the database*/
+    $(document).on('click', '#edit_prod', function(){
+        $.post("/vendors/edit_product", $("#edit").serialize(), function(display){
+            console.log(display);
+            $("#primary").html(display);
+        });
+        return false;
+    });
+
+    /*Product search function*/
+    $(document).on('click', '#search_submit', function(){
+        $.post("/vendors/search_product", $("#product_search").serialize(), function(display){
+            console.log(display);
+            $("#primary").html(display);
+        });
+        return false;
+    });
+
+    /*Same as function above except on 'enter' key being pressed*/
+    $(document).on('keypress', '#search_box', function(e){
+        if (e.which == 13) {
+            $.post("/vendors/search_product", $("#product_search").serialize(), function(display){
+            console.log(display);
+            $("#primary").html(display);
+        });
+        return false;
+        }
+    });
+
+    /*Add a product to vendors catalogue from the search results*/
+    $(document).on('click', '#add_product', function(){
+        var product_id = $(this).attr("product");
+        $.post("/vendors/add_product", {product_id}, function(display){
+            $("#primary").html(display);
+        });
+    });
+
+    /*Actually add the product to the database in the shared table*/
+    $(document).on('click', '#add_prod', function(){
+        $.post("/vendors/append_product", $("#product_to_add").serialize(), function(display){
+            $("#primary").html(display);
+        });
+        return false;
     });
