@@ -92,7 +92,17 @@ class Products extends CI_Controller {
 	public function vendor()
 	{	
 		$vendors = $this->product->get_vendor($this->session->userdata('strain_info'));
-		$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
+		if($vendors['strain_id']['id']){
+			// $vendors = $vendors['vendor_info'][0];
+			// $product_id = $vendors['strain_id']['id'];
+			$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
+		}
+		else{
+			$vendors = $vendors['vendor_info'][0];
+			$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
+		}
+		// $vendors = $vendors['vendor_info'][0];
+		// $this->load->view('products/partials/vendor', array('vendors'=>$vendors, 'product_id'=>$product_id));
 
 	}
 
@@ -101,6 +111,52 @@ class Products extends CI_Controller {
         $vendor_name = str_replace('-', ' ', $vendor_name);		
 		$vendor = $this->product->get_single_vendor($vendor_name);
 		$this->load->view('products/vendor_page', array('vendor_products'=>$vendor, 'vendor_name'=>$vendor_name));
+	}
+
+	public function add()
+	{
+		$unconfirmed_id = $this->product->get_unconfirmed_orders();
+		$reservation = $this->input->post();
+
+		$check['vendor_id'] = $reservation['vendor_id'];
+		
+		if($this->get_unconfirmed_orders() == 0)
+		{
+			$this->product->add_order($reservation);
+			$order_id = $this->db->insert_id();
+		}
+
+		else
+		{		
+			foreach($unconfirmed_id as $open_id)
+			{
+				if($open_id['vendor_id'] == $check['vendor_id']){
+					$order_id = $open_id['order_id'];
+					break;
+				}
+				else{
+					$this->product->add_order($reservation);
+				}
+			}
+
+			$this->product->add_products_belongs($reservation, $order_id);
+		}
+
+	}
+
+	//get user's unconfirmed orders
+	public function get_user_reservations()
+	{
+		//remember that the argument below will actually be the logged in users
+		$reservations = $this->product->get_user_reservations(1);
+		$this->load->view('products/reservations', array('reservations'=>$reservations));
+	}
+
+	//returns all of a user's unconfirmed orders
+	public function get_unconfirmed_orders()
+	{
+		return $this->product->get_unconfirmed_orders();
+
 	}
 
 }

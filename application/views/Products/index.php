@@ -9,25 +9,55 @@
         <!-- SITE TITLE -->
         <title>GreenSpace | Virtual Marijuana Marketplace</title>
 
-        <link rel="stylesheet" href="/landing/css/bootstrap.css">
-        <link rel="stylesheet" href="/landing/css/animate.min.css">    
-        <link rel="stylesheet" href="/landing/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/products/custom.css">
-        <link rel="stylesheet" type="text/css" href="/css/products/icon.css">
-        <script src="/landing/js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="/landing/js/queryloader2.min.js"></script>
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+
+    <!-- =========================
+       Fonts, typography and icons
+    ============================== -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/typography.css">
+
+    <!-- =========================
+       Carousel, lightbox and circle generator
+    ============================== -->
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="/assets/css/nivo-lightbox.css">
+    <link rel="stylesheet" href="/assets/css/nivo-lightbox-default.css">
+    <link rel="stylesheet" href="/assets/css/jquery.circliful.css">
+
+    <!-- ***** Main Stylesheet ***** -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- ***** My Custom Stylesheet ***** -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
+
+    <!-- ***** Responsive fixes ***** -->
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <!-- my - obi - custom css -->
+    <link rel="stylesheet" type="text/css" href="/css/products/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/products/icon.css">
+
+    <!-- Header scripts -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="/assets/js/queryloader2.min.js"></script>
+
+    
     
 	</head>
 
-	<body>
-
         <!-- INCLUDE STATIC NAV BAR PARTIAL -->
-        <div id="nav">
+        <nav class="navbar navbar-default">
             <?php include 'partials/nav.php';?>
-        </div>
+        </nav>
 
+    <body>
         <!-- LOAD PRODUCT INFO DIV USING PARTIALS..EVENTUALLY -> for now just static-->
-        <div class="container" id="product_info">
+        <div class="container">
             <div class="row">
                 <!-- echo product name based on product id bassed  -->
                 <h1>Product: <?= $search_results['name']?></h1>
@@ -37,10 +67,10 @@
                 <div class ="col-md-6 pull-left">
                     <div class="display_inline">
                         <ul class="thumbs">
-                            <li><img src="<?=$search_results['photos'][0]['thumb']?>"></li>
-                            <li><img src="<?=$search_results['photos'][1]['thumb']?>"></li>
-                            <li><img src="<?=$search_results['photos'][2]['thumb']?>"></li>
-                            <li><img src="<?=$search_results['photos'][3]['thumb']?>"></li>
+                            <li><img class="bud-thumb" src="<?=$search_results['photos'][0]['thumb']?>"></li>
+                            <li><img class="bud-thumb" src="<?=$search_results['photos'][1]['thumb']?>"></li>
+                            <li><img class="bud-thumb" src="<?=$search_results['photos'][2]['thumb']?>"></li>
+                            <li><img class="bud-thumb" src="<?=$search_results['photos'][3]['thumb']?>"></li>
                         </ul>
                     </div>
                     <div class="display_inline">
@@ -58,9 +88,10 @@
                 </div>
                 <!-- right column contains the strain attribute visual -->
                 <div class="col-md-6" id="effects_div">
+                    <h3>Effects</h3>
                     <ul class="skill-bar">
                         <li>
-                            <p>Openness to novel experience: </p> <?=$search_results['effects'][0]['score']?>
+                            <p>Openness to novel experience:</p>
                             <div class="wrapper"><span id="open" data-width="<?=$search_results['effects'][0]['score']?>"></span></div>
                         </li>
                         <li>
@@ -83,7 +114,7 @@
                 </div>   
             </div>
         </div>
-
+        </div>
         <!-- LOAD VENDOR INFO DIV USING PARTIALS -->
         <div class="container">
             <div class="row">
@@ -93,21 +124,35 @@
 
 
 
-        <script src="/landing/js/vendor/jquery-1.11.1.js"></script>
-        <script src="/landing/js/vendor/bootstrap.js"></script>
-        <script src="/landing/js/wow.min.js"></script>
-        <script src="/landing/js/imagesloaded.pkgd.min.js"></script>
-        <script src="/landing/js/appear.js"></script>
-        <script src="/landing/js/isotope.pkgd.min.js"></script>
-        <script src="/landing/js/main.js"></script>
+    <script src="/assets/js/vendor/jquery-1.11.1.js"></script>
+    <script src="/assets/js/vendor/jquery-migrate-1.2.1.min.js"></script>
+   
+    <script src="/assets/js/twitterFetcher_min.js"></script>
+    <script src="/assets/js/vendor/bootstrap.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/assets/js/jquery.easing.min.js"></script>
+    <script src="/assets/js/appear.js"></script>
+    <script src="/assets/js/jquery.circliful.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/nivo-lightbox.min.js"></script>
+    <script src="/assets/js/isotope.pkgd.min.js"></script>
+    <script src="/assets/js/main.js"></script>
 
+    <!-- ***** My custom plugin ***** -->
+    <script src="/assets/js/jquery.transit.min.js"></script>
+    <!-- ***** My custom javascript ***** -->
+    <script src="/assets/js/custom.js"></script>
+
+
+                <!-- // $.get("/products/effects", function(res){
+                //     $("#effects_div").html(res);
+                // }); -->
 
         <script type="text/javascript">
             $(document).ready(function(){
-                // $.get("/products/effects", function(res){
-                //     $("#effects_div").html(res);
-                // });
                 $.get("/products/vendor", function(res){
+                    console.log('here');
                     $("#vendor_div").html(res);
                 });
             });
