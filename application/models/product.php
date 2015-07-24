@@ -93,8 +93,9 @@ class Product extends CI_Model {
     {
         $products_query = "insert into products_belong_to_order(product_id, order_id, quantity)
                             values(?,?,?)";
-        $products_values = array($reservation['product_id'], $order_id, $reservation['quantity']);
 
+        $products_values = array($reservation['product_id'], $order_id, $reservation['quantity']);
+    
         return $this->db->query($products_query, $products_values);
     }
 

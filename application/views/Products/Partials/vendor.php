@@ -1,17 +1,16 @@
 <div class="col-md-6 col-md-offset-6" id="vendor">
     <?php if($vendors['vendor_info']){
-
+        // echo '<pre>';
         // var_dump($vendors);
         // die();
 
         ?>
     <div>
         <h3>Vendor Name:<?=$vendors['vendor_info'][0]['name']?></h3>
-        <h3>Vendor Rating: <?=$vendors['vendor_info'][0]['vendor_rating']?></h3>
     </div>
     <div>
         <!-- this price will change to reflect the users choice in the drop downs below...wtf -->
-        <h3 id="price_gm">Price/gm: <?=$vendors['vendor_info'][0]['price_gm']?></h3>
+        <h3 id="price_gm">Price/gm: <?=$vendors['vendor_info'][0]['price_gram']?></h3>
     </div>
     <div>
         <div>

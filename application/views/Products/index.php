@@ -32,8 +32,9 @@
     <!-- ***** Main Stylesheet ***** -->
     <link rel="stylesheet" href="/assets/css/main.css">
 
-    <!-- ***** My Custom Stylesheet ***** -->
+    <!-- ***** Jason custom Stylesheet ***** -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
 
     <!-- ***** Responsive fixes ***** -->
     <link rel="stylesheet" href="/assets/css/responsive.css">
@@ -51,9 +52,8 @@
 	</head>
 
         <!-- INCLUDE STATIC NAV BAR PARTIAL -->
-        <nav class="navbar navbar-default">
-            <?php include 'partials/nav.php';?>
-        </nav>
+        <?php include '/application/views/partials/user_nav.php';?>
+        
 
     <body>
         <!-- LOAD PRODUCT INFO DIV USING PARTIALS..EVENTUALLY -> for now just static-->

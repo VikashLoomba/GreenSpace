@@ -8,9 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" type="text/css" href="/css/vendor/vendor.css">
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="/js/vendor/vendor.js"></script>
-	<script src="/js/bootstrap.js"></script>
     <title>Vendor Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -288,4 +285,7 @@
 	c-0.049-0.366-0.046-0.739-0.025-1.11c0.009-0.125,0.024-0.25,0.042-0.375C12.122,17.814,12.141,17.732,12.164,17.65z"></path>
   </g>
 </svg>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="/js/vendor/vendor.js"></script>
+	<script src="/js/bootstrap.js"></script>
 </html>

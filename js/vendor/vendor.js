@@ -62,6 +62,7 @@ $(function(){
 
     /*Load Orders Partial as homepage when dom is ready*/
     $(document).ready(function(){
+        
         $.get("/vendors/orders", function(order){
             $("#primary").html(order);
         });
@@ -105,7 +106,7 @@ $(function(){
         if ($("#stock").val() == 0) 
         {
                 $("#stock").val() == $("#stock").attr("previous");
-                console.log('stock was set to previous');
+                // console.log('stock was set to previous');
         };
         if ($("#price").val() == 0) 
         {
