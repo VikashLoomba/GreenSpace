@@ -6,9 +6,9 @@
 					<img style="max-width:200px; height:auto; margin-top:-20px;" alt="Brand" src="/img/logo.png">
 				</a>
 			</div>
-			<form action='/search' class="navbar-form navbar-left" role="search" method='post'>
+			<form action='/search/1' class="navbar-form navbar-left" role="search" method='post'>
 	        	<div class="form-group">
-	          		<input type="text" class="form-control" placeholder="Search">
+	          		<input name = 'search' type="text" class="form-control" placeholder="Search">
 	        	</div>
 	        	<button type="submit" class="btn btn-default"><i class="flaticon-magnifying-glass34"></i></button>
 	      	</form>

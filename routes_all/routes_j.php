@@ -51,5 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'mains';
 $route['search/(:any)'] = 'mains/search/$1';
+
+$route['get_slugs'] = 'mains/get_slugs';
+$route['get_JSON/(:any)'] = 'mains/get_JSON/$1';
+$route['convert_JSON_To_Array/(:any)'] = 'mains/convert_JSON_To_Array/$1';
+$route['insert_data/(:any)'] = 'mains/insert_data/$1';
+
+$route['automate'] = 'mains/automate';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

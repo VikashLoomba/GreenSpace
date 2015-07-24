@@ -363,11 +363,23 @@
         </div> <!-- *** end container *** -->
     </section> <!-- *** end Why Choose Us *** -->
 
-
-    <!-- =========================
+     <!-- =========================
        Our Skills
     ============================== -->
-    <section id="our-skills" class="our-skills">
+
+    <section id='our-skills' class='our-skills'>
+        <div id='footer' class='row'>
+            <div class='container'>
+                <div class='row text-center'>
+                    <div class='col-md-4'>
+                        <img src='/img/leafly.png'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <!-- <section id="our-skills" class="our-skills">
         <div class="container padding-top-large">
             <h2>
                 Our
@@ -399,10 +411,10 @@
                 <div class="col-md-5">
                     <img src="/assets/img/skill-bg.jpg" class="center-block img-responsive" alt="Our Skills are excellent">
                 </div>
-                <div class="clearfix"></div>
-            </div> <!-- *** end row *** -->
-        </div> <!-- *** end container *** -->
-    </section> <!-- *** end Our Skills *** -->
+                <div class="clearfix"></div> -->
+            <!--</div>  *** end row *** -->
+        <!--</div>  *** end container *** -->
+    <!--</section>  *** end Our Skills *** -->
 
 
    
@@ -413,6 +425,7 @@
     <div class="back-to-top" data-rel="header">
         <i class="flaticon-up151"></i> 
     </div>
+    <div class='clear-fix'></div>
 
     <!-- =========================
      JavaScripts
