@@ -17,7 +17,7 @@ else
 	{ ?>
 	<tr>
 		<td><?= $result['name']; ?></td>
-		<td><?= $result['short_description']; ?></td>
+		<td><?= $result['description']; ?></td>
 		<td><button id="add_product" product="<?= $result['id'];?>" class="btn btn-default">Add?</button></td>
 	</tr>
 <?	} ?>

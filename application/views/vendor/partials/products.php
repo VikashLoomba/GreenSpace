@@ -10,6 +10,7 @@ else
 			<th>Strain Name</th>
 			<th>Stock(in grams)</th>
 			<th>Price(per gram)</th>
+			<th>Edit Product</th>
 		</tr>
 	</thead>
 	<tbody>	
@@ -19,6 +20,7 @@ else
 		<td><?= $product['name']; ?></td>
 		<td><?= $product['stock_gram']; ?></td>
 		<td>$<?= $product['price_gram']; ?></td>
+		<td><a vendor="<?= $product['vend_prod_id']; ?>" product="<?= $product['id']; ?>" class="btn btn-danger" id="show_product">Edit</a></td>
 	</tr>
 <?	} ?>
 	</tbody>
