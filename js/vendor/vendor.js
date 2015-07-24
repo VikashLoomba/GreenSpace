@@ -102,8 +102,16 @@ $(function(){
 
     /*Edit Product Information in the database*/
     $(document).on('click', '#edit_prod', function(){
+        if ($("#stock").val() == 0) 
+        {
+                $("#stock").val() == $("#stock").attr("previous");
+                console.log('stock was set to previous');
+        };
+        if ($("#price").val() == 0) 
+        {
+                $("#price").val() == $("#price").attr("previous");
+        };
         $.post("/vendors/edit_product", $("#edit").serialize(), function(display){
-            console.log(display);
             $("#primary").html(display);
         });
         return false;
@@ -112,7 +120,6 @@ $(function(){
     /*Product search function*/
     $(document).on('click', '#search_submit', function(){
         $.post("/vendors/search_product", $("#product_search").serialize(), function(display){
-            console.log(display);
             $("#primary").html(display);
         });
         return false;
@@ -122,7 +129,6 @@ $(function(){
     $(document).on('keypress', '#search_box', function(e){
         if (e.which == 13) {
             $.post("/vendors/search_product", $("#product_search").serialize(), function(display){
-            console.log(display);
             $("#primary").html(display);
         });
         return false;
