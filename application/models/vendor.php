@@ -34,7 +34,7 @@ class Vendor extends CI_Model {
 /*Get all the products that the vendor carries*/
     public function get_products($vendor_id)
     {
-    	$query = "SELECT products2.id, products2.name, vendor_products.id AS vend_prod_id, vendor_products.stock_gram, vendor_products.price_gram FROM products2 LEFT JOIN vendor_products ON products2.id = vendor_products.product_id 
+    	$query = "SELECT products.id, products.name, vendor_products.id AS vend_prod_id, vendor_products.stock_gram, vendor_products.price_gram FROM products LEFT JOIN vendor_products ON products.id = vendor_products.product_id 
     	JOIN vendors ON vendor_products.vendor_id = vendors.id WHERE vendors.id = ?;";
     	$values = array($vendor_id);
     	return $this->db->query($query, $values)->result_array();
@@ -42,7 +42,7 @@ class Vendor extends CI_Model {
 /*Get the information for a single product that the vendor carries*/
     public function get_single_product($vendor_product_info)
     {
-    	$query = "SELECT products2.id, products2.name, vendor_products.id, vendor_products.stock_gram, vendor_products.price_gram FROM products2 LEFT JOIN vendor_products ON products2.id = vendor_products.product_id 
+    	$query = "SELECT products.id, products.name, vendor_products.id, vendor_products.stock_gram, vendor_products.price_gram FROM products LEFT JOIN vendor_products ON products.id = vendor_products.product_id 
     				JOIN vendors ON vendor_products.vendor_id = vendors.id WHERE vendors.id = ? AND vendor_products.product_id = ?;";
     	$values = array($vendor_product_info['vendor_id'], $vendor_product_info['product_id']);
     	return $this->db->query($query, $values)->row_array();
@@ -50,7 +50,7 @@ class Vendor extends CI_Model {
 /*Finds products related to search query from the database that the vendor doesn't carry*/
     public function find_product($search_term, $vendor_id)
     {
-    	$query = "SELECT * from greencommerce.products2 where (products2.name like '%$search_term%' OR products2.description like '%$search_term%') AND products2.id not in(
+    	$query = "SELECT * from greencommerce.products where (products.name like '%$search_term%' OR products.description like '%$search_term%') AND products.id not in(
     		select product_id from vendor_products where vendor_id = $vendor_id);";
     	return $this->db->query($query)->result_array();
     }

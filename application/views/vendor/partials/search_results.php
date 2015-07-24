@@ -1,3 +1,13 @@
+<div class="row">
+	
+		<form id="product_search" method="post">
+			<div class="col-md-4">
+				<input id="search_box" type="text" class="form-control" name="search_query" placeholder="Search for a product">
+			</div>  
+			<a id="search_submit" class="btn btn-primary btn-info">Submit</a>
+		</form>
+	
+</div>
 <? if (count($search_results) == 0) 
 { ?>
 	<div class="alert alert-info" role="alert">No Products Found</div>
@@ -26,12 +36,11 @@ else
 <? } 
 ?>
 <div class="row">
-	
-		<form id="product_search" method="post">
-			<div class="col-md-4">
-				<input id="search_box" type="text" class="form-control" name="search_query" placeholder="Search for a product">
-			</div>  
-			<a id="search_submit" class="btn btn-primary btn-info">Submit</a>
-		</form>
-	
+	<form id="product_search" method="post">
+		<div class="col-md-4">
+			<input id="search_box" type="text" class="form-control" name="search_query" placeholder="Search for a product">
+		</div>  
+		<a id="search_submit" class="btn btn-primary btn-info">Submit</a>
+	</form>	
 </div>
+
