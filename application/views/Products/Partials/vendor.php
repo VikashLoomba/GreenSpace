@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-6" id="vendor">
-    <?php if($vendors){
+    <?php if($vendors['vendor_info']){
 
         // var_dump($vendors);
         // die();
