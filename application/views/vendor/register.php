@@ -23,23 +23,71 @@
 
             <div class="panel-body" >
 
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="/vendor/home">
-                   
-                    <div class="input-group">
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="/vendors/submit_registration">
+
+                	<label>Organization Name:</label>
+                	<div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="user" type="text" class="form-control" name="username" value="" placeholder="Username">                                        
+                        <input id="name" type="text" class="form-control" name="name" value="" placeholder="Organization Name">                                        
                     </div>
 
+                	<label>Username:</label>
+                	<div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="user" type="text" class="form-control" name="username" value="" placeholder="Username used to log in">                                        
+                    </div>
+
+                    <label>Password:</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                    </div>                                                                  
+                    </div>
 
+                    <label>Email:</label>
+                	<div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="email" type="email" class="form-control" name="email" value="" placeholder="Contact email">                                        
+                    </div>
+
+                    <label>Phone Number:</label>
+                	<div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input id="phone" type="phone" class="form-control" name="phone" value="" placeholder="Contact Phone">                                        
+                    </div>		
+
+                    <label>Address Line 1:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input id="address-line1" class="form-control" name="address-line1" type="text" placeholder="address line 1">
+                    </div>
+
+                    <label>Address Line 2:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input id="address-line2" class="form-control" name="address-line2" type="text" placeholder="address line 2">
+                    </div>
+
+                    <label>City:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input id="city" class="form-control" name="city" type="text" placeholder="City">
+                    </div>
+
+                    <label>State:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input id="state" class="form-control" name="state" type="text" placeholder="State">
+                    </div>
+
+                    <label>Zip/Postal Code:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <input id="zip" class="form-control" name="zip" type="text" placeholder="Zip Code">
+                    </div>
                     <div class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
-                            <a href="/vendor/register" class="btn btn-primary pull-left"><i class="glyphicon glyphicon-register"></i> Register</a>                          
-                            <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
+                            <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Complete Registration</button>                                        
                         </div>
                     </div>
 
