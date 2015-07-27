@@ -50,7 +50,7 @@ class Vendor extends CI_Model {
 /*Finds products related to search query from the database that the vendor doesn't carry*/
     public function find_product($search_term, $vendor_id)
     {
-    	$query = "SELECT * from greencommerce.products where (products.name like '%$search_term%' OR products.description like '%$search_term%') AND products.id not in(
+    	$query = "SELECT * from greencommerce.products where products.name like '%$search_term%' AND products.id not in(
     		select product_id from vendor_products where vendor_id = $vendor_id);";
     	return $this->db->query($query)->result_array();
     }

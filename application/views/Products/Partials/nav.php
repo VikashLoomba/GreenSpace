@@ -1,3 +1,4 @@
+<nav id='nav' class="navbar navbar-default navbar-fixed-top">
     <div class='container'>
         <div class="container-fluid">
             <div class="navbar-header">
@@ -15,8 +16,8 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jason Thai <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
+                    <li><a href="/products/get_user_reservations">Cart</a></li>
+                    <li><a href="/users/dashboard">User Dashboard</a></li>
                     <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Logout</a></li>
@@ -26,3 +27,4 @@
         </div>
 
     </div>
+</nav>

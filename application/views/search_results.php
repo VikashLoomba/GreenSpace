@@ -61,7 +61,7 @@
     <script src="/assets/js/vendor/jquery-1.11.1.js"></script>
 </head>
 <body>
-	<?php include '/partials/user_nav.php'; ?>
+	<?php include 'partials/user_nav.php'; ?>
 	<div class='container margin-top-large'>
 		<h2>Search Results (<?= $total ?>)</h2>
 		<div class="line main-bg margin-bottom-large"></div>

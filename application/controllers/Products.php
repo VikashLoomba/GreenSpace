@@ -49,15 +49,15 @@ class Products extends CI_Controller {
 	// }
 
 	
-	//FOR NOW THE SEARCH FUNCTION ONLY WORKS ON STRAINS - NOT VENDORS -> VENDORS WILL COME FROM THE DB..right..?
-	public function product_info()
-	{
+	// //FOR NOW THE SEARCH FUNCTION ONLY WORKS ON STRAINS - NOT VENDORS -> VENDORS WILL COME FROM THE DB..right..?
+	// public function product_info()
+	// {
 		
-		//pass an array below with a products info
-		$strain = $this->product->get_strain();
-		$this->load->view('products/index', array('search_results'=>$strain));
-		// $this->load->view('products/partials/product_info', array('search_results'=>$result));
-	}
+	// 	//pass an array below with a products info
+	// 	$strain = $this->product->get_strain();
+	// 	$this->load->view('products/index', array('search_results'=>$strain));
+	// 	// $this->load->view('products/partials/product_info', array('search_results'=>$result));
+	// }
 
 	//search from url
 	public function search($strain)
@@ -69,16 +69,16 @@ class Products extends CI_Controller {
 	// public function search(){
 	// 	$query = $this->input->post();
 	// 	$this->product->search_results($query);
-	// 	$this->load->view('products/index', array('search_results'=>$strain_info));	
+	// 	$this->load->view('products/index', array('search_results'=m >$strain_info));	
 	// }
 
 
 	//strain below comes from the url request and is a strain slug
 	public function strain_index($strain){
-		//function below calls the search_results method from the product model to make an api strain request to the leafly api
+		//function below calls the search_results method from the product model to search the db for a strain
 		$strain_info = $this->product->search_results($strain);
-		$this->session->set_userdata('strain_info', $strain_info);
-		$this->load->view('products/index', array('search_results'=>$strain_info));	
+		$this->session->set_userdata('strain_info', $strain_info[0]);
+		$this->load->view('products/index', array('search_results'=>$strain_info[0]));	
 	}
 
 	public function effects()
@@ -93,14 +93,12 @@ class Products extends CI_Controller {
 	{	
 		$vendors = $this->product->get_vendor($this->session->userdata('strain_info'));
 		if($vendors['strain_id']['id']){
-			// $vendors = $vendors['vendor_info'][0];
-			// $product_id = $vendors['strain_id']['id'];
 			$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
 		}
-		else{
-			$vendors = $vendors['vendor_info'][0];
-			$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
-		}
+		// else{
+		// 	$vendors = $vendors['vendor_info'][0];
+		// 	$this->load->view('products/partials/vendor', array('vendors'=>$vendors));
+		// }
 		// $vendors = $vendors['vendor_info'][0];
 		// $this->load->view('products/partials/vendor', array('vendors'=>$vendors, 'product_id'=>$product_id));
 
@@ -115,12 +113,12 @@ class Products extends CI_Controller {
 
 	public function add()
 	{
+		die();
 		$unconfirmed_id = $this->product->get_unconfirmed_orders();
 		$reservation = $this->input->post();
-
 		$check['vendor_id'] = $reservation['vendor_id'];
 		
-		if($this->get_unconfirmed_orders() == 0)
+		if($unconfirmed_id == 0)
 		{
 			$this->product->add_order($reservation);
 			$order_id = $this->db->insert_id();
@@ -140,7 +138,12 @@ class Products extends CI_Controller {
 			}
 
 			$this->product->add_products_belongs($reservation, $order_id);
+			$page = $this->product->get_product_name_from_id($reservation['product_id']);
+			$page = $page[0];
+			$page = str_replace(' ', '-', $page);
 		}
+		die();
+		$this->load->view('reservations');	
 
 	}
 
@@ -149,14 +152,23 @@ class Products extends CI_Controller {
 	{
 		//remember that the argument below will actually be the logged in users
 		$reservations = $this->product->get_user_reservations(1);
-		$this->load->view('products/reservations', array('reservations'=>$reservations));
+		$this->load->view('/products/reservations', array('reservations'=>$reservations));
 	}
 
 	//returns all of a user's unconfirmed orders
-	public function get_unconfirmed_orders()
-	{
-		return $this->product->get_unconfirmed_orders();
 
+	public function load_users_unconfirmed_reservations()
+	{
+		//replace argument below with session user
+		$unconfirmed_orders = $this->product->get_unconfirmed_orders(1);
+		$this->load->view('products/orders_page',array('open_reservations'=> $unconfirmed_orders));
+
+	}
+
+	public function confirm_reservation()
+	{
+		$this->product->confirm_reservation(2);
+		$this->load_users_unconfirmed_reservations();
 	}
 
 }

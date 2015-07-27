@@ -1,33 +1,39 @@
-<div class="col-md-6 col-md-offset-6" id="vendor">
-    <?php if($vendors['vendor_info']){
-        // echo '<pre>';
-        // var_dump($vendors);
-        // die();
+<div>
+    <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Vendor Name</th>
+                        <th>Price (per/gram)</th>
+                        <th>Quantity</th>
+                        <th></th>
+                        <th>Add to reservations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+<?php if($vendors){
+foreach($vendors['vendor_info'] as $vendor){ ?>
+<tr>
+    <td><?=$vendor['name']?></td>
 
-        ?>
-    <div>
-        <h3>Vendor Name:<?=$vendors['vendor_info'][0]['name']?></h3>
-    </div>
-    <div>
-        <!-- this price will change to reflect the users choice in the drop downs below...wtf -->
-        <h3 id="price_gm">Price/gm: <?=$vendors['vendor_info'][0]['price_gram']?></h3>
-    </div>
-    <div>
-        <div>
-            <form action="/products/add" method="post">
-                <!-- change the value below to echo the logged in user -->
+        
+        <td>$<?=$vendor['price_gram']?></td>
+    
+            <td>
+                <form action="/products/add" method="post">
                 <input type="hidden" name="user_id" value="1">
-                <input type="hidden" name="vendor_id" value="<?=$vendors['vendor_info'][0]['vendor_id']?>">
-                <input type="hidden" name="product_id" value="<?=$vendors['strain_id']['id']?>">
+                <input type="hidden" name="vendor_id" value="<?=$vendor['vendor_id']?>">
+                <input type="hidden" name="product_id" value="<?=$vendor['product_id']?>">
                 <select name="quantity">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
-                    <option>3</option>
+                    <option>5</option>
                 </select>
-                <input type="submit" value="Add to reservations">
+            <td>
+                <td><input class="btn btn-primary" type="submit" value="Add to reservations"><td>
             </form>
-        </div>
-    </div>
 <?php }?>
+<?php }?>
+</tbody>
+</table>

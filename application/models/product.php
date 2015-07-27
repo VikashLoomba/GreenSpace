@@ -2,40 +2,45 @@
 
 class Product extends CI_Model {
 
-     public function get_strain()
-     {
+    public function get_strain()
+    {
         $strain_info = $this->db->query("SELECT * from products where id=1")->row_array();
         return $strain_info;
-     }
+    }
 
-     public function search_results($query)
-     {
-    
-        $app_id = '4ddfe7a9';
-        $app_key = 'f65a763047cad07bb2d6fdabbc9860b3';
-        $search_url = 'http://data.leafly.com/strains/';
-        $query = str_replace(' ', '-', $query);
-        $query = str_replace('_', '-', $query);
-        $search_url = $search_url.$query;
-        //  Initiate curl
-        $ch = curl_init($search_url);
-        // // Disable SSL verification
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // Will return the response, if false it will print the response
-        curl_setopt($ch, CURLOPT_URL,$search_url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array("APP_ID:" . $app_id, "APP_KEY:" . $app_key));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // Set the url
-        // Execute
-        $result=curl_exec($ch);
-        // Closing
-        curl_close($ch);
+    public function search_results($strain)
+    {
+        $query = "SELECT * FROM PRODUCTS
+                    where products.slug = ?";
+        $values = array($strain);
+        return $this->db->query($query, $values)->result_array();
+    }
 
-        // Will return the cleaned up search result object
-        return json_decode($result, true);
+        // $app_id = '4ddfe7a9';
+        // $app_key = 'f65a763047cad07bb2d6fdabbc9860b3';
+        // $search_url = 'http://data.leafly.com/strains/';
+        // $query = str_replace(' ', '-', $query);
+        // $query = str_replace('_', '-', $query);
+        // $search_url = $search_url.$query;
+        // //  Initiate curl
+        // $ch = curl_init($search_url);
+        // // // Disable SSL verification
+        // // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // // Will return the response, if false it will print the response
+        // curl_setopt($ch, CURLOPT_URL,$search_url);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array("APP_ID:" . $app_id, "APP_KEY:" . $app_key));
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // // Set the url
+        // // Execute
+        // $result=curl_exec($ch);
+        // // Closing
+        // curl_close($ch);
 
-        //pass an array below with a products info
-     }
+        // // Will return the cleaned up search result object
+        // return json_decode($result, true);
+
+        // //pass an array below with a products info
+     
 
     public function find_product($search_term, $vendor_id)
     {
@@ -59,11 +64,20 @@ class Product extends CI_Model {
     //returns product id given name
     public function get_product_id_from_name($strain_name)
     {
+
         $query = "SELECT products.id 
                     from products
                     where products.name = ?";
         $values = $strain_name;
         return $this->db->query($query, $values)->row_array();
+    }
+
+    public function get_product_name_from_id($strain_id)
+    {
+        $query = "SELECT products.name from products where products.id = ?";
+        $values = array($strain_id);
+
+        return $this->db->query($query, $values)->result_array();
     }
 
     public function get_single_vendor($vendor_name)
@@ -81,7 +95,7 @@ class Product extends CI_Model {
     //this fn adds a reservation for a particular product for a given vendor for the logged in user
     public function add_order($reservation)
     {
-        $order_query = "insert into orders(created_at, user_id, vendor_id, order_confirmed) 
+        $order_query = "INSERT into orders(created_at, user_id, vendor_id, order_confirmed) 
                             values(now(), ?, ?, 0)";
         $order_values = array($reservation['user_id'], $reservation['vendor_id']);
 
@@ -91,7 +105,7 @@ class Product extends CI_Model {
 
     public function add_products_belongs($reservation,$order_id)
     {
-        $products_query = "insert into products_belong_to_order(product_id, order_id, quantity)
+        $products_query = "INSERT into products_belong_to_order(product_id, order_id, quantity)
                             values(?,?,?)";
 
         $products_values = array($reservation['product_id'], $order_id, $reservation['quantity']);
@@ -101,7 +115,7 @@ class Product extends CI_Model {
 
     public function get_user_reservations($user_id)
     {
-        $query = "select users.first_name, products.name, orders.id, vendor_id, products_belong_to_order.quantity
+        $query = "SELECT users.first_name, products.name, orders.id, vendor_id, products_belong_to_order.quantity
                     from products
                     join products_belong_to_order on products_belong_to_order.product_id = products.id
                     join orders on products_belong_to_order.order_id = orders.id 
@@ -115,16 +129,26 @@ class Product extends CI_Model {
         return $this->db->query($query, $values)->result_array();
     }
 
-    public function get_unconfirmed_orders()
+    public function get_unconfirmed_orders($user_id)
     {
-        $query = "select orders.id as order_id, vendor_id from orders
-                    where orders.order_confirmed=0
-                    and user_id = ?";
+        $query = "SELECT users.first_name, products.name, orders.id as order_id, vendor_id, products_belong_to_order.quantity, orders.order_confirmed
+                    from products
+                    join products_belong_to_order on products_belong_to_order.product_id = products.id
+                    join orders on products_belong_to_order.order_id = orders.id 
+                    join users on users.id = orders.user_id
+                    where (users.id = ? and orders.order_confirmed = 0);";
         
         // the actual argument below will be the session user's id
-        $values = array(1);
+        $values = array($user_id);
 
         return $this->db->query($query, $values)->result_array();
+    }
+
+    public function confirm_reservation($order_id)
+    {
+        $query = "UPDATE greencommerce.orders SET order_confirmed = 1 WHERE id =?";
+        $values = array($order_id);
+        $this->db->query($query, $values);
     }
 
 }

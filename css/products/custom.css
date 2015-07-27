@@ -5,11 +5,11 @@
 .thumbs{
     list-style-type: none;
 /*    display: inline-block;*/
-    /*padding-left: 0;*/
+    padding-left: 70px;
 }
 
 .thumbs li{
-    /*display: inline-block;*/
+    display: inline-block;
 }
 
 #stars{
@@ -46,4 +46,27 @@
 {
   width: 100px;
   height: 100px;
+}
+
+.center{
+  margin: 0 auto;
+}
+
+#test-graph{
+  width: 400px;
+  height:418px;
+  margin-left: 85px 
+}
+
+.row{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#top-half{
+  margin-bottom: 100px;
+}
+
+.outlined{
+  outline: 1px solid #35dea1;
 }

@@ -123,6 +123,29 @@ class Mains extends CI_Controller {
 		$this->load->view('populate');
 	}
 	
+	public function user_login() {
+		$this->load->view('user_login');
+	}
+
+	public function get_user()
+	{
+		$this->load->model('login');
+		$this->login->login_user();
+	}
+	public function user_dashboard() {
+		$this->load->view('user_dashboard');
+	}
+
+	public function user_registration() {
+		$this->load->view('user_registration');
+	}
+
+	public function registration_check()
+	{
+		$this->load->model('login');
+		$this->login->register();
+
+	}
 }
 
 
