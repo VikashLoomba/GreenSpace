@@ -661,7 +661,7 @@ header .logo-container {
   transition: background .5s;
 }
 .case-study .case-study-left {
-  background: url("../img/case-study/bf-left.jpg") no-repeat;
+  background: url("../../img/jars.jpg") no-repeat;
   background-size: cover;
 }
 .case-study .case-study-right {
