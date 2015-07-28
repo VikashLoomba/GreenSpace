@@ -38,7 +38,7 @@
 
 /*
  *---------------------------------------------------------------
- * APPLICATION ENVIRONMENT
+ * APPLICATION ENVIRONMEN
  *---------------------------------------------------------------
  *
  * You can load different configurations depending on your
