@@ -118,7 +118,6 @@ class Products extends CI_Controller {
 
 	public function add()
 	{
-		die();
 		$unconfirmed_id = $this->product->get_unconfirmed_orders();
 		$reservation = $this->input->post();
 		$check['vendor_id'] = $reservation['vendor_id'];
@@ -147,7 +146,6 @@ class Products extends CI_Controller {
 			$page = $page[0];
 			$page = str_replace(' ', '-', $page);
 		}
-		die();
 		$this->load->view('reservations');	
 
 	}
