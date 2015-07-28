@@ -1,4 +1,4 @@
-<nav id='nav' class="navbar navbar-default navbar-fixed-top">
+<nav id='nav' class="navbar navbar-inverse navbar-fixed">
 	<div class='container'>
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -10,20 +10,31 @@
 	        	<div class="form-group">
 	          		<input name = 'search' type="text" class="form-control" placeholder="Search">
 	        	</div>
-	        	<button type="submit" class="btn btn-default"><i class="flaticon-magnifying-glass34"></i></button>
+	        	<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
 	      	</form>
-			<ul id='nav_right_custom' class="nav navbar-nav navbar-right">
-	        <li class="dropdown">
-	      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jason Thai <span class="caret"></span></a>
-	          	<ul class="dropdown-menu">
-		            <li><a href="#">Cart</a></li>
-		            <li><a href="#">Cart</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Logout</a></li>
+	      	<ul id='nav_right_custom' class="nav navbar-nav navbar-right">
+	      		<li class="dropdown">
+	      	<?php if (!isset($user['id'])) 
+	      	{ ?>
+	      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, Guest! <span class="caret"></span></a>
+	      		<ul class="dropdown-menu">
+	      			<li><a href="/login">Log In</a></li>
+	      			<li role="separator" class="divider"></li>
+		            <li><a href="/register">Register</a></li>
 	         	</ul>
-	        </li>
-	      </ul>
+	    <?  }
+	    		else{ ?>
+	    			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, <?= $user['first_name']; ?>! <span class="caret"></span></a>
+	          		<ul class="dropdown-menu">
+			            <li><a href="/users/dashboard">User Dashboard</a></li>
+			            <li><a href="#">Cart</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="/logout">Logout</a></li>
+	         		</ul>
+	    	<?	} ?>
+	      		
+	        	</li>
+	      	</ul>
 		</div>
 
 	</div>

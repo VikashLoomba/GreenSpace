@@ -59,6 +59,12 @@ $route['convert_JSON_To_Array/(:any)'] = 'mains/convert_JSON_To_Array/$1';
 $route['insert_data/(:any)'] = 'mains/insert_data/$1';
 $route['automate'] = 'mains/automate';
 
+/*User Stuff*/
+$route['user/dashboard'] = 'users/dashboard';
+$route['login'] = 'users/user_login';
+$route['logout'] = 'users/logout';
+$route['register'] = 'users/user_registration';
+
 //obi's routes
 $route['products/add'] = 'products/add';
 $route['product/(:any)'] = 'products/strain_index/$1';
@@ -72,7 +78,7 @@ $route['vendor/register'] = 'vendors/registration';
 $route['vendor/product/search'] = 'vendors/search_product';
 $route['vendor/product/add'] = 'vendors/add_product';
 $route['vendor/product/show/(:any)'] = 'vendors/show_product/$1';
-$route['user/dashboard'] = 'users/dashboard';
+
 
 
 $route['404_override'] = '';

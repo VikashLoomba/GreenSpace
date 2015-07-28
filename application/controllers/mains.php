@@ -5,7 +5,7 @@ class Mains extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		// $this->output->enable_profiler();
+		$this->output->enable_profiler();
 	}
 
 	public function index() {
@@ -34,9 +34,9 @@ class Mains extends CI_Controller {
 		for ($i = $start; $i < $end; $i++) {
 			$strains_display[] = $strains[$i];
 		}
-		$this->load->view('search_results', array('strains' => $strains_display, 'total' => count($strains), 'page_num' => $page));
+		$this->load->view('search_results', array('user'=> $this->session->userdata('user'), 'strains' => $strains_display, 'total' => count($strains), 'page_num' => $page));
 	}
-
+/*THIS IS THE AUTOMATION/DATABASE POPULATOR FUNCTIONS*/
 	// get all slug names within OUR database
 	public function get_slugs() {
 		$this->load->model('search');
@@ -121,30 +121,6 @@ class Mains extends CI_Controller {
 
 	public function automate() {
 		$this->load->view('populate');
-	}
-	
-	public function user_login() {
-		$this->load->view('user_login');
-	}
-
-	public function get_user()
-	{
-		$this->load->model('login');
-		$this->login->login_user();
-	}
-	public function user_dashboard() {
-		$this->load->view('user_dashboard');
-	}
-
-	public function user_registration() {
-		$this->load->view('user_registration');
-	}
-
-	public function registration_check()
-	{
-		$this->load->model('login');
-		$this->login->register();
-
 	}
 }
 

@@ -23,11 +23,11 @@
 
             <div class="panel-body" >
 
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="/mains/get_user">
+                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST" action="/users/get_user">
                    
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="user" type="text" class="form-control" name="email" value="" placeholder="Username">                                        
+                        <input id="user" type="email" class="form-control" name="email" value="" placeholder="email">                                        
                     </div>
 
                     <div class="input-group">
@@ -39,7 +39,7 @@
                         <!-- Button -->
                         <div class="col-sm-12 controls">
                             <a href="/vendor/register" class="btn btn-primary pull-left"><i class="glyphicon glyphicon-register"></i> Register</a>                          
-                            <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
+                            <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
                         </div>
                     </div>
 

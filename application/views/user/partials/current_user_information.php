@@ -5,19 +5,19 @@
         </div> 
 	    <div class="panel-body">     
 			<div class="form-group">
-				<label>First Name: <?=$user['first_name']?></label>
+				<label>First Name: <?=$user['first_name'];?></label>
 			</div>
 			<div class="form-group">
-				<label>Last Name:  <?=$user['last_name']?></label>
+				<label>Last Name:  <?=$user['last_name'];?></label>
 			</div>
 			<div class="form-group">
-				<label>Birthdate:  <?=$user['birthdate']?></label>
+				<label>Birthdate:  <?=$user['birthdate'];?></label>
 			</div>
 			<div class="form-group">
-				<label>Email: <?=$user['email']?> </label>
+				<label>Email: <?=$user['email'];?></label>
 			</div>
 			<div class="form-group">
-				<label>Phone Number:  <?=$user['phone_number']?></label>
+				<label>Phone Number:  <?=$user['phone_number'];?></label>
 			</div>
 			<div class="form-group">
 				<button id="update_information" class="btn btn-info pull-right">Update Your Information?</button>

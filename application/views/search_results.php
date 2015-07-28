@@ -25,7 +25,7 @@
     <!-- =========================
        Bootstrap and animation
     ============================== -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    
     <link rel="stylesheet" href="/assets/css/animate.min.css">
 
     <!-- =========================
@@ -34,7 +34,7 @@
     <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/assets/css/font-awesome.css">
-    <link rel="stylesheet" href="/assets/css/typography.css">
+    <!-- <link rel="stylesheet" href="/assets/css/typography.css"> -->
 
     <!-- =========================
        Carousel, lightbox and circle generator
@@ -49,11 +49,11 @@
     <link rel="stylesheet" href="/assets/css/main.css">
 
     <!-- ***** Responsive fixes ***** -->
-    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <!-- <link rel="stylesheet" href="/assets/css/responsive.css"> -->
 
-    <!-- ***** My Custom Stylesheet ***** -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
+    <!-- ***** My Custom Stylesheet and Scripts ***** -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    
 
     <!-- Header scripts -->
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -61,8 +61,8 @@
     <script src="/assets/js/vendor/jquery-1.11.1.js"></script>
 </head>
 <body>
-	<?php include 'partials/user_nav.php'; ?>
-	<div class='container margin-top-large'>
+	<?php $this->load->view('partials/user_nav'); ?>
+	<div id="results" class='container margin-top-large'>
 		<h2>Search Results (<?= $total ?>)</h2>
 		<div class="line main-bg margin-bottom-large"></div>
 		<?php foreach ($strains as $strain) { 

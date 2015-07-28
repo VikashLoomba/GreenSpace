@@ -1,14 +1,5 @@
 /******* THIS IS STYLE FOR LANDING PAGE ******/
 
-.search-bar {
-	margin-top: 50px;
-}
-
-.btn-search {
-	position: relative;
-	top:-1px;
-}
-
 .form-control::-webkit-input-placeholder { color: #8B8B8B; }
 .form-control:-moz-placeholder { color: #8B8B8B; }
 .form-control::-moz-placeholder { color: #8B8B8B; }

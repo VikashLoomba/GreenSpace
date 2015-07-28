@@ -31,10 +31,9 @@
 
     <!-- ***** Main Stylesheet ***** -->
     <link rel="stylesheet" href="/assets/css/main.css">
-
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <!-- ***** Jason custom Stylesheet ***** -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/search.css">
+   
 
     <!-- ***** Responsive fixes ***** -->
     <link rel="stylesheet" href="/assets/css/responsive.css">
@@ -59,7 +58,7 @@
 
         <!-- INCLUDE STATIC NAV BAR PARTIAL -->
         
-        <?php include 'partials/nav.php'; ?>
+        <?php $this->load->view('partials/user_nav', array('user' => $this->session->userdata('user'))); ?>
 
     <body>      
         <div class="container">

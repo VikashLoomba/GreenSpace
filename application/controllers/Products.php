@@ -65,6 +65,11 @@ class Products extends CI_Controller {
 		return $this->product->search_results($strain);
 	}
 
+	public function search_results()
+	{
+		$this->load->view('partials/search_results_partials');
+	}
+
 	// search from within form => for testing purposes (normally the form will go to results page)
 	// public function search(){
 	// 	$query = $this->input->post();

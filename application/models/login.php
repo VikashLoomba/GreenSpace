@@ -10,30 +10,22 @@ class Login extends CI_Model {
         $values = array($post['email'], $post['password'], $post['first_name'], $post['last_name'], $post['phone_number'], 
                     $post['birthdate'],0);
         $this->db->query($query, $values);
-
-        redirect('/');
      }
 
-     public function login_user()
-     {
-
-
-            $post = $this->input->post();
-            
-            $query = "select * from users 
-                        where users.email = ? AND users.password = ?";
+     public function login_user($post)
+     {      
+            $query = "SELECT * from users where users.email = ? AND users.password = ?;";
             $values = array($post['email'],$post['password']);
-            $user = $this->db->query($query, $values)->row_array();
-
-            if(!$user){ //if there is no one with credentials provided
+            return $this->db->query($query, $values)->row_array();
+            if(!$this->db->query($query, $values))
+            { //if there is no one with credentials provided
                 $this->session->set_flashdata('errors', "Invalid username or password! Register below for access or try again.");
                 redirect('mains/user_login');
             }
             else
             {
                 $this->session->set_userdata('logged_in', TRUE);
-                $this->session->set_userdata('user', $user);
-                redirect('mains/user_dashboard');
+                return $this->db->query($query, $values)->result_array();
             }
     }
 }

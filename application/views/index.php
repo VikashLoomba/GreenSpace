@@ -25,7 +25,7 @@
     <!-- =========================
        Bootstrap and animation
     ============================== -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/animate.min.css">
 
     <!-- =========================
@@ -170,7 +170,7 @@
                                 <div class='form-group col-md-4 col-md-offset-4'>
                                     <form action='/search/1' class="search-bar" method='post'>
                                         <input type="search" class='form-control' placeholder="Search strains or dispensaries" name='search'>
-                                        <button type="submit" class="btn btn-default btn-search"><i class="flaticon-magnifying-glass34"></i></button>  
+                                        <a type="submit" class="btn btn-small"><span class="glyphicon glyphicon-search"></span></a>  
                                     </form>
                                 </div>
                             </div>
